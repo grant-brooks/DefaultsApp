@@ -70,104 +70,123 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                         
                         if seperatedByAndArray.count == 5
                         {
-                            if seperatedByAndArray[0].hasPrefix("to=")
+                            for passedParameter in seperatedByAndArray
                             {
-                                var toString = dropFirstThreeCharactersOfString(seperatedByAndArray[0])
-                                
-                                if toString == "nil"
+                                if passedParameter.hasPrefix("to=")
                                 {
-                                    toIsNil = true
-                                    println("To field was left empty.")
+                                    var toString = dropFirstThreeCharactersOfString(passedParameter)
+                                    
+                                    if toString == "nil"
+                                    {
+                                        toIsNil = true
+                                        println("To field was left empty.")
+                                    }
+                                    else
+                                    {
+                                        toIsNil = false
+                                        println("Message is To: '\(toString)'.")
+                                    }
                                 }
                                 else
                                 {
-                                    toIsNil = false
-                                    println("Message is To: '\(toString)'.")
+                                    if toIsNil != false
+                                    {
+                                        toIsNil = true
+                                    }
                                 }
-                            }
-                            else
-                            {
-                                throwTypeError()
-                            }
-                            
-                            if seperatedByAndArray[1].hasPrefix("cc=")
-                            {
-                                var ccString = dropFirstThreeCharactersOfString(seperatedByAndArray[1])
                                 
-                                if ccString == "nil"
+                                if passedParameter.hasPrefix("cc=")
                                 {
-                                    ccIsNil = true
-                                    println("CC field was left empty.")
+                                    var ccString = dropFirstThreeCharactersOfString(passedParameter)
+                                    
+                                    if ccString == "nil"
+                                    {
+                                        ccIsNil = true
+                                        println("CC field was left empty.")
+                                    }
+                                    else
+                                    {
+                                        ccIsNil = false
+                                        println("Message is CC'd To: '\(ccString)'.")
+                                    }
                                 }
                                 else
                                 {
-                                    ccIsNil = false
-                                    println("Message is CC'd To: '\(ccString)'.")
+                                    if ccIsNil != false
+                                    {
+                                        ccIsNil = true
+                                    }
                                 }
-                            }
-                            else
-                            {
-                                throwTypeError()
-                            }
-                            
-                            if seperatedByAndArray[2].hasPrefix("bcc=")
-                            {
-                                var bccString = dropFirstFourCharactersOfString(seperatedByAndArray[2])
                                 
-                                if bccString == "nil"
+                                if passedParameter.hasPrefix("bcc=")
                                 {
-                                    bccIsNil = true
-                                    println("BCC field was left empty.")
+                                    var bccString = dropFirstFourCharactersOfString(passedParameter)
+                                    
+                                    if bccString == "nil"
+                                    {
+                                        bccIsNil = true
+                                        println("BCC field was left empty.")
+                                    }
+                                    else
+                                    {
+                                        bccIsNil = false
+                                        println("Message is BCC'd To: '\(bccString)'.")
+                                    }
                                 }
                                 else
                                 {
-                                    bccIsNil = false
-                                    println("Message is BCC'd To: '\(bccString)'.")
+                                    if bccIsNil != false
+                                    {
+                                        bccIsNil = true
+                                    }
                                 }
-                            }
-                            else
-                            {
-                                throwTypeError()
-                            }
-                            
-                            if seperatedByAndArray[3].hasPrefix("subject=")
-                            {
-                                var subjectString = dropFirstEightCharactersOfString(seperatedByAndArray[3])
                                 
-                                if subjectString == "nil"
+                                if passedParameter.hasPrefix("subject=")
                                 {
-                                    subjectIsNil = true
-                                    println("Subject field was left empty.")
+                                    var subjectString = dropFirstEightCharactersOfString(passedParameter)
+                                    
+                                    if subjectString == "nil"
+                                    {
+                                        subjectIsNil = true
+                                        println("Subject field was left empty.")
+                                    }
+                                    else
+                                    {
+                                        subjectIsNil = false
+                                        println("Message's Subject is: '\(subjectString)'.")
+                                    }
                                 }
                                 else
                                 {
-                                    subjectIsNil = false
-                                    println("Message's Subject is: '\(subjectString)'.")
+                                    if subjectIsNil != false
+                                    {
+                                        subjectIsNil = true
+                                    }
                                 }
-                            }
-                            else
-                            {
-                                throwTypeError()
-                            }
-                            
-                            if seperatedByAndArray[4].hasPrefix("body=")
-                            {
-                                var messageString = dropFirstFiveCharactersOfString(seperatedByAndArray[4])
                                 
-                                if messageString == "nil"
+                                if passedParameter.hasPrefix("body=")
                                 {
-                                    messageIsNil = true
-                                    println("Message field was left empty.")
+                                    var messageString = dropFirstFiveCharactersOfString(passedParameter)
+                                    
+                                    if messageString == "nil"
+                                    {
+                                        messageIsNil = true
+                                        println("Message field was left empty.")
+                                    }
+                                    else
+                                    {
+                                        messageIsNil = false
+                                        println("Message's Message is: '\(messageString)'.")
+                                    }
                                 }
                                 else
                                 {
-                                    messageIsNil = false
-                                    println("Message's Message is: '\(messageString)'.")
+                                    if messageIsNil != false
+                                    {
+                                        messageIsNil = true
+                                    }
                                 }
-                            }
-                            else
-                            {
-                                throwTypeError()
+                                
                             }
                         }
                         else
@@ -202,44 +221,53 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                         
                         if seperatedByAndArray.count == 2
                         {
-                            if seperatedByAndArray[0].hasPrefix("daddr=")
+                            for passedParameter in seperatedByAndArray
                             {
-                                var typeString = dropFirstSixCharactersOfString(seperatedByAndArray[0])
-                                
-                                if typeString == "nil"
+                                if passedParameter.hasPrefix("daddr=")
                                 {
-                                    destinationIsNil = true
-                                    println("Destination field was left empty.")
+                                    var destinationString = dropFirstSixCharactersOfString(passedParameter)
+                                    
+                                    if destinationString == "nil"
+                                    {
+                                        destinationIsNil = true
+                                        println("Destination field was left empty.")
+                                    }
+                                    else
+                                    {
+                                        destinationIsNil = false
+                                        println("Destination is: '\(destinationString)'.")
+                                    }
                                 }
                                 else
                                 {
-                                    destinationIsNil = false
-                                    println("Destination is: '\(typeString)'.")
+                                    if destinationIsNil != false
+                                    {
+                                        destinationIsNil = true
+                                    }
                                 }
-                            }
-                            else
-                            {
-                                throwTypeError()
-                            }
-                            
-                            if seperatedByAndArray[1].hasPrefix("saddr=")
-                            {
-                                var typeString = dropFirstSixCharactersOfString(seperatedByAndArray[1])
                                 
-                                if typeString == "nil"
+                                if passedParameter.hasPrefix("saddr=")
                                 {
-                                    startingPointIsNil = true
-                                    println("Starting point field was left empty.")
+                                    var startingPointString = dropFirstSixCharactersOfString(passedParameter)
+                                    
+                                    if startingPointString == "nil"
+                                    {
+                                        startingPointIsNil = true
+                                        println("Starting point field was left empty.")
+                                    }
+                                    else
+                                    {
+                                        startingPointIsNil = false
+                                        println("Starting point is: '\(startingPointString)'.")
+                                    }
                                 }
                                 else
                                 {
-                                    startingPointIsNil = false
-                                    println("Starting point is: '\(typeString)'.")
+                                    if startingPointIsNil != false
+                                    {
+                                        startingPointIsNil = true
+                                    }
                                 }
-                            }
-                            else
-                            {
-                                throwTypeError()
                             }
                         }
                     }
