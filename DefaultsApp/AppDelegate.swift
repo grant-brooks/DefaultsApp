@@ -68,7 +68,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                         
                         var seperatedByAndArray: [String] = seperatedString.componentsSeparatedByString("&")
                         
-                        if seperatedByAndArray.count == 5
+                        if seperatedByAndArray.count > 0
                         {
                             for passedParameter in seperatedByAndArray
                             {
@@ -186,7 +186,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                                         messageIsNil = true
                                     }
                                 }
-                                
                             }
                         }
                         else
@@ -219,7 +218,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                         
                         var seperatedByAndArray: [String] = seperatedString.componentsSeparatedByString("&")
                         
-                        if seperatedByAndArray.count == 2
+                        if seperatedByAndArray.count > 0
                         {
                             for passedParameter in seperatedByAndArray
                             {
