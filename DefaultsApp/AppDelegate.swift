@@ -49,6 +49,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         var subjectIsNil: Bool?
         var messageIsNil: Bool?
         
+        var destinationIsNil: Bool?
+        var startingPointIsNil: Bool?
+        
         if url.scheme == "comdefaults"
         {
             if url.host == "mail"
@@ -58,105 +61,113 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 if seperatedArray.count > 1
                 {
                     var seperatedString = seperatedArray[1] as String
-                    seperatedString = dropFirst(seperatedString)
                     
-                    var seperatedByAndArray: [String] = seperatedString.componentsSeparatedByString("&")
-                    
-                    if seperatedByAndArray.count == 5
+                    if seperatedString != ""
                     {
-                        if seperatedByAndArray[0].hasPrefix("to=")
-                        {
-                            var toString = dropFirstThreeCharactersOfString(seperatedByAndArray[0])
-                            
-                            if toString == "nil"
-                            {
-                                toIsNil = true
-                                println("To field was left empty.")
-                            }
-                            else
-                            {
-                                toIsNil = false
-                                println("Message is To: '\(toString)'.")
-                            }
-                        }
-                        else
-                        {
-                            throwTypeError()
-                        }
+                        seperatedString = dropFirst(seperatedString)
                         
-                        if seperatedByAndArray[1].hasPrefix("cc=")
-                        {
-                            var ccString = dropFirstThreeCharactersOfString(seperatedByAndArray[1])
-                            
-                            if ccString == "nil"
-                            {
-                                ccIsNil = true
-                                println("CC field was left empty.")
-                            }
-                            else
-                            {
-                                ccIsNil = false
-                                println("Message is CC'd To: '\(ccString)'.")
-                            }
-                        }
-                        else
-                        {
-                            throwTypeError()
-                        }
+                        var seperatedByAndArray: [String] = seperatedString.componentsSeparatedByString("&")
                         
-                        if seperatedByAndArray[2].hasPrefix("bcc=")
+                        if seperatedByAndArray.count == 5
                         {
-                            var bccString = dropFirstFourCharactersOfString(seperatedByAndArray[2])
-                            
-                            if bccString == "nil"
+                            if seperatedByAndArray[0].hasPrefix("to=")
                             {
-                                bccIsNil = true
-                                println("BCC field was left empty.")
+                                var toString = dropFirstThreeCharactersOfString(seperatedByAndArray[0])
+                                
+                                if toString == "nil"
+                                {
+                                    toIsNil = true
+                                    println("To field was left empty.")
+                                }
+                                else
+                                {
+                                    toIsNil = false
+                                    println("Message is To: '\(toString)'.")
+                                }
                             }
                             else
                             {
-                                bccIsNil = false
-                                println("Message is BCC'd To: '\(bccString)'.")
+                                throwTypeError()
                             }
-                        }
-                        else
-                        {
-                            throwTypeError()
-                        }
-                        
-                        if seperatedByAndArray[3].hasPrefix("subject=")
-                        {
-                            var subjectString = dropFirstEightCharactersOfString(seperatedByAndArray[3])
                             
-                            if subjectString == "nil"
+                            if seperatedByAndArray[1].hasPrefix("cc=")
                             {
-                                subjectIsNil = true
-                                println("Subject field was left empty.")
+                                var ccString = dropFirstThreeCharactersOfString(seperatedByAndArray[1])
+                                
+                                if ccString == "nil"
+                                {
+                                    ccIsNil = true
+                                    println("CC field was left empty.")
+                                }
+                                else
+                                {
+                                    ccIsNil = false
+                                    println("Message is CC'd To: '\(ccString)'.")
+                                }
                             }
                             else
                             {
-                                subjectIsNil = false
-                                println("Message's Subject is: '\(subjectString)'.")
+                                throwTypeError()
                             }
-                        }
-                        else
-                        {
-                            throwTypeError()
-                        }
-                        
-                        if seperatedByAndArray[4].hasPrefix("body=")
-                        {
-                            var messageString = dropFirstFiveCharactersOfString(seperatedByAndArray[4])
                             
-                            if messageString == "nil"
+                            if seperatedByAndArray[2].hasPrefix("bcc=")
                             {
-                                messageIsNil = true
-                                println("Message field was left empty.")
+                                var bccString = dropFirstFourCharactersOfString(seperatedByAndArray[2])
+                                
+                                if bccString == "nil"
+                                {
+                                    bccIsNil = true
+                                    println("BCC field was left empty.")
+                                }
+                                else
+                                {
+                                    bccIsNil = false
+                                    println("Message is BCC'd To: '\(bccString)'.")
+                                }
                             }
                             else
                             {
-                                messageIsNil = false
-                                println("Message's Message is: '\(messageString)'.")
+                                throwTypeError()
+                            }
+                            
+                            if seperatedByAndArray[3].hasPrefix("subject=")
+                            {
+                                var subjectString = dropFirstEightCharactersOfString(seperatedByAndArray[3])
+                                
+                                if subjectString == "nil"
+                                {
+                                    subjectIsNil = true
+                                    println("Subject field was left empty.")
+                                }
+                                else
+                                {
+                                    subjectIsNil = false
+                                    println("Message's Subject is: '\(subjectString)'.")
+                                }
+                            }
+                            else
+                            {
+                                throwTypeError()
+                            }
+                            
+                            if seperatedByAndArray[4].hasPrefix("body=")
+                            {
+                                var messageString = dropFirstFiveCharactersOfString(seperatedByAndArray[4])
+                                
+                                if messageString == "nil"
+                                {
+                                    messageIsNil = true
+                                    println("Message field was left empty.")
+                                }
+                                else
+                                {
+                                    messageIsNil = false
+                                    println("Message's Message is: '\(messageString)'.")
+                                }
+                            }
+                            else
+                            {
+                                throwTypeError()
                             }
                         }
                         else
@@ -166,12 +177,78 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                     }
                     else
                     {
-                        throwTypeError()
+                        println("This guy just wants to open Mail.")
                     }
                 }
                 
                 //mail?to=%@,cc=%@,bcc=%@,subject=%@body=%@
                 //comdefaults://mail?to=grantgoodman@optonline.net&cc=john@example.com&bcc=goodmang@live.northshoreschools.org&subject=Hello!&body=How%20are%20you?
+                
+                //comdefaults://navigate?daddr=%f,%f&saddr=%f,%f
+            }
+            else if url.host == "navigate"
+            {
+                var seperatedArray: [String] = url.relativeString!.componentsSeparatedByString("comdefaults://navigate")
+                
+                if seperatedArray.count > 1
+                {
+                    var seperatedString = seperatedArray[1] as String
+                    
+                    if seperatedString != ""
+                    {
+                        seperatedString = dropFirst(seperatedString)
+                        
+                        var seperatedByAndArray: [String] = seperatedString.componentsSeparatedByString("&")
+                        
+                        if seperatedByAndArray.count == 2
+                        {
+                            if seperatedByAndArray[0].hasPrefix("daddr=")
+                            {
+                                var typeString = dropFirstSixCharactersOfString(seperatedByAndArray[0])
+                                
+                                if typeString == "nil"
+                                {
+                                    destinationIsNil = true
+                                    println("Destination field was left empty.")
+                                }
+                                else
+                                {
+                                    destinationIsNil = false
+                                    println("Destination is: '\(typeString)'.")
+                                }
+                            }
+                            else
+                            {
+                                throwTypeError()
+                            }
+                            
+                            if seperatedByAndArray[1].hasPrefix("saddr=")
+                            {
+                                var typeString = dropFirstSixCharactersOfString(seperatedByAndArray[1])
+                                
+                                if typeString == "nil"
+                                {
+                                    startingPointIsNil = true
+                                    println("Starting point field was left empty.")
+                                }
+                                else
+                                {
+                                    startingPointIsNil = false
+                                    println("Starting point is: '\(typeString)'.")
+                                }
+                            }
+                            else
+                            {
+                                throwTypeError()
+                            }
+                        }
+                    }
+                    else
+                    {
+                        println("This guy just wants to open Maps.")
+                    }
+                }
+                
             }
             else
             {
@@ -208,6 +285,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func dropFirstFiveCharactersOfString(dropString: String) -> String
     {
         var newDropString = dropFirst(dropString)
+        newDropString = dropFirst(newDropString)
+        newDropString = dropFirst(newDropString)
+        newDropString = dropFirst(newDropString)
+        newDropString = dropFirst(newDropString)
+        
+        return newDropString
+    }
+    
+    func dropFirstSixCharactersOfString(dropString: String) -> String
+    {
+        var newDropString = dropFirst(dropString)
+        newDropString = dropFirst(newDropString)
         newDropString = dropFirst(newDropString)
         newDropString = dropFirst(newDropString)
         newDropString = dropFirst(newDropString)
