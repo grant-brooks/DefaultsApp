@@ -13,6 +13,8 @@
 		684CD9111B9AAFC7004C06A5 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 684CD9101B9AAFC7004C06A5 /* Images.xcassets */; };
 		684CD9141B9AAFC7004C06A5 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 684CD9121B9AAFC7004C06A5 /* LaunchScreen.xib */; };
 		684CD9201B9AAFC8004C06A5 /* DefaultsAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 684CD91F1B9AAFC8004C06A5 /* DefaultsAppTests.swift */; };
+		684CD92A1B9AB142004C06A5 /* Mail.png in Resources */ = {isa = PBXBuildFile; fileRef = 684CD9291B9AB142004C06A5 /* Mail.png */; };
+		684CD92B1B9AB142004C06A5 /* Mail.png in Resources */ = {isa = PBXBuildFile; fileRef = 684CD9291B9AB142004C06A5 /* Mail.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,6 +38,7 @@
 		684CD9191B9AAFC8004C06A5 /* DefaultsAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DefaultsAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		684CD91E1B9AAFC8004C06A5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		684CD91F1B9AAFC8004C06A5 /* DefaultsAppTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultsAppTests.swift; sourceTree = "<group>"; };
+		684CD9291B9AB142004C06A5 /* Mail.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Mail.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,6 +85,7 @@
 				684CD90D1B9AAFC7004C06A5 /* Main.storyboard */,
 				684CD9101B9AAFC7004C06A5 /* Images.xcassets */,
 				684CD9121B9AAFC7004C06A5 /* LaunchScreen.xib */,
+				684CD9291B9AB142004C06A5 /* Mail.png */,
 				684CD9071B9AAFC7004C06A5 /* Supporting Files */,
 			);
 			path = DefaultsApp;
@@ -194,6 +198,7 @@
 			files = (
 				684CD90F1B9AAFC7004C06A5 /* Main.storyboard in Resources */,
 				684CD9141B9AAFC7004C06A5 /* LaunchScreen.xib in Resources */,
+				684CD92A1B9AB142004C06A5 /* Mail.png in Resources */,
 				684CD9111B9AAFC7004C06A5 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -202,6 +207,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				684CD92B1B9AB142004C06A5 /* Mail.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -409,6 +415,7 @@
 				684CD9251B9AAFC8004C06A5 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		684CD9261B9AAFC8004C06A5 /* Build configuration list for PBXNativeTarget "DefaultsAppTests" */ = {
 			isa = XCConfigurationList;
@@ -417,6 +424,7 @@
 				684CD9281B9AAFC8004C06A5 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
